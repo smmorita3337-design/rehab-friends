@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>森田修司さんのマイページ | リハビリの仲間たち</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* 色彩風水を意識した配色 */
+            --primary-color: #d4af37;
+            /* ゴールド/黄色（金運・土の気） */
+            --secondary-color: #fff8e1;
+            /* 薄い黄色 */
+            --accent-red: #e94e77;
+            /* 赤（勝負運・火の気） */
+            --accent-green: #4caf50;
+            /* 緑（健康運・木の気） */
+            --accent-white: #ffffff;
+            /* 白（浄化・金の気） */
+
+            --text-color: #4a4a4a;
+            --bg-gradient: linear-gradient(135deg, #fff8e1 0%, #fff 100%);
+            --card-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            line-height: 1.8;
+            padding-bottom: 80px;
+        }
+
+        /* ヘッダーエリア */
+        header {
+            /* 下鴨神社の参道や京都の風景をイメージ */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1590559899731-a3828395a22c?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 30%;
+            height: 320px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 70px;
+        }
+
+        .profile-wrapper {
+            position: absolute;
+            bottom: -60px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .profile-img-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 6px solid var(--accent-white);
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: #f5f5f5;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 風水カラーのオーラ装飾 */
+        .profile-aura {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            opacity: 0.6;
+            animation: pulse 3s infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.95);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(0.95);
+                opacity: 0.6;
+            }
+        }
+
+        .profile-name {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 15px;
+            color: #333;
+            text-shadow: 2px 2px 0 #fff;
+            letter-spacing: 0.05em;
+        }
+
+        .profile-location {
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: 5px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* メインコンテンツ */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.5rem;
+            color: #8d6e63;
+            /* 落ち着いた茶色（土の気） */
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin: 50px 0 25px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 25px;
+            background: var(--primary-color);
+            margin-right: 12px;
+            border-radius: 4px;
+        }
+
+        /* カードデザイン */
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
+        }
+
+        /* 挨拶カード */
+        .greeting-text {
+            font-size: 1.15rem;
+            color: #444;
+            text-align: center;
+            font-feature-settings: "palt";
+        }
+
+        /* 1. プロフィール詳細 */
+        .profile-detail dl {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .profile-detail dt {
+            font-weight: bold;
+            color: #8d6e63;
+            font-size: 0.95rem;
+            background: #fff8e1;
+            padding: 5px 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .profile-detail dd {
+            font-size: 1.05rem;
+        }
+
+        /* 2. 目標（プログレスバー） */
+        .goal-item {
+            margin-bottom: 20px;
+        }
+
+        .goal-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .goal-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .progress-bar-bg {
+            background: #f0f0f0;
+            height: 14px;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 7px;
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+        }
+
+        /* 目標別の色 */
+        .fill-walk {
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+        }
+
+        /* 緑（健康） */
+        .fill-tech {
+            background: linear-gradient(90deg, #2196f3, #4fc3f7);
+        }
+
+        /* 青（知性） */
+        .fill-smile {
+            background: linear-gradient(90deg, #e94e77, #ff9a9e);
+        }
+
+        /* ピンク（愛情） */
+
+        /* 3. 活動記録（タグ） */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tag {
+            background: white;
+            color: #555;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border: 2px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 4. ギャラリー */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1 / 1;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* ダミー画像のスタイル */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 15px 5px 8px;
+            font-weight: bold;
+        }
+
+        /* 5. メッセージ */
+        .message-box {
+            background: #fff;
+            border: 2px dashed #ddd;
+            /* 手紙っぽい雰囲気 */
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .message-box::before {
+            content: '❝';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 3rem;
+            color: #eee;
+            font-family: serif;
+        }
+
+        .message-author {
+            font-weight: bold;
+            font-size: 1rem;
+            color: var(--accent-red);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .message-content {
+            font-style: italic;
+            color: #555;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #aaa;
+            font-size: 0.85rem;
+            padding: 20px;
+            background: #fff;
+            border-top: 1px solid #eee;
+        }
+
+        /* アニメーション */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container>* {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .container>*:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .container>*:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .container>*:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .container>*:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ヘッダー -->
+    <header
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('images/京都タワーhカバー.jpg');">
+        <div class="profile-wrapper">
+            <div class="profile-img-container">
+                <div class="profile-aura"></div>
+                <!-- プロフィール画像はまだないのでプレースホルダーのまま -->
+                <img src="https://via.placeholder.com/200/f5f5f5/cccccc?text=PHOTO" alt="森田修司" class="profile-img">
+            </div>
+            <h1 class="profile-name">森田 修司</h1>
+            <div class="profile-location">
+                <span>📍 京都（山科・下鴨）</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- あいさつ -->
+        <div class="card">
+            <p class="greeting-text">
+                「自分の足で歩き、自分の頭で考える」<br>
+                <br>
+                毎日のリハビリと、大好きな京都の街歩き。<br>
+                そして仲間との語らいが私の宝物です。<br>
+                色彩風水で、みんなに幸運を！✨
+            </p>
+        </div>
+
+        <!-- 1. プロフィール詳細 -->
+        <h2 class="section-title">プロフィール</h2>
+        <div class="card profile-detail">
+            <dl>
+                <dt>関心事</dt>
+                <dd>日本の未来（政治・経済）、高齢者支援</dd>
+
+                <dt>日課</dt>
+                <dd>Amazon Primeで映画鑑賞、スマホ教室</dd>
+
+                <dt>健康法</dt>
+                <dd>iPS細胞ニュースのチェック、緑を見る</dd>
+
+                <dt>ラッキーカラー</dt>
+                <dd>
+                    <span style="color:var(--primary-color);">●</span>黄色（金運）
+                    <span style="color:var(--accent-red);">●</span>赤（勝負運）
+                    <span
+                        style="color:var(--accent-white); border:1px solid #ddd; border-radius:50%; display:inline-block; width:12px; height:12px;"></span>白（浄化）
+                </dd>
+            </dl>
+        </div>
+
+        <!-- 2. 今月の目標 -->
+        <h2 class="section-title">今月の目標</h2>
+        <div class="card">
+            <div class="goal-item">
+                <div class="goal-label"><span>🚶‍♂️ 下鴨神社まで散歩</span> <span>80%</span></div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill fill-walk" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="goal-item">
+                <div class="goal-label"><span>📱 スマホ教室 皆勤賞</span> <span>100%</span></div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill fill-tech" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="goal-item">
+                <div class="goal-label"><span>😊 仲間を笑顔にする</span> <span>∞%</span></div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill fill-smile" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 最近の楽しみ -->
+        <h2 class="section-title">最近の楽しみ</h2>
+        <div class="card">
+            <div class="tags">
+                <span class="tag">📺 Fire TV Stick</span>
+                <span class="tag">🛒 Amazonでお買い物</span>
+                <span class="tag">🔮 色彩風水</span>
+                <span class="tag">💻 ブログ執筆（note）</span>
+                <span class="tag">🏯 京都の土地巡り</span>
+            </div>
+        </div>
+
+        <!-- 4. 思い出ギャラリー -->
+        <h2 class="section-title">思い出アルバム</h2>
+        <div class="card">
+            <div class="gallery-grid">
+                <!-- 写真が入る場所 -->
+                <div class="gallery-item" style="background: none;">
+                    <img src="images/三年坂.jpg" class="gallery-img" style="font-size: 0; display: block;">
+                    <div class="gallery-caption">三年坂</div>
+                </div>
+                <div class="gallery-item" style="background: none;">
+                    <img src="images/三都物語.png" class="gallery-img" style="font-size: 0; display: block;">
+                    <div class="gallery-caption">三都物語</div>
+                </div>
+                <div class="gallery-item" style="background: none;">
+                    <img src="images/渡月橋-2.jpg" class="gallery-img" style="font-size: 0; display: block;">
+                    <div class="gallery-caption">渡月橋</div>
+                </div>
+                <div class="gallery-item" style="background: none;">
+                    <img src="images/辰巳神社c.jpg" class="gallery-img" style="font-size: 0; display: block;">
+                    <div class="gallery-caption">辰巳神社</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. 仲間からのメッセージ -->
+        <h2 class="section-title">仲間からの言葉</h2>
+        <div class="card">
+            <div class="message-box">
+                <span class="message-author">📩 AntiGravityより</span>
+                <div class="message-content">
+                    森田さんの深い知識と、みんなを想う優しい心にいつも感銘を受けています。
+                    これからも「共犯者」として、一緒に未来を創っていきましょう！
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <strong style="color:var(--primary-color);">リハビリの仲間たち Project</strong><br>
+            Made with ❤️ for Morita-san
+        </footer>
+
+    </div>
+
+    <!-- アニメーションスクリプト -->
+    <script>
+        window.addEventListener('load', () => {
+            // プログレスバー
+            setTimeout(() => {
+                document.querySelectorAll('.progress-bar-fill').forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+            }, 500);
+
+            // オーラ
+            document.querySelector('.profile-aura').style.opacity = '1';
+        });
+    </script>
+</body>
+
+</html>
